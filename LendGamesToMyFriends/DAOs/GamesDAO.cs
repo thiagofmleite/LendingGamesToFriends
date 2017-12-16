@@ -8,7 +8,7 @@ using System.Web;
 
 namespace LendGamesToMyFriends.DAOs
 {
-    public class GamesDAO
+    public class GamesDAO : IGamesDAO
     {
         private LendGamesContext context;
 

@@ -22,5 +22,7 @@ namespace LendGamesToMyFriends.Controllers
             var games = dao.GetAll();
             return View(games);
         }
+
+        
     }
 }

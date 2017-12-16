@@ -9,6 +9,7 @@ namespace LendGamesToMyFriends.Context
     public partial class LendGamesContext : DbContext
     {
         public DbSet<Game> Games{ get; set; }
+        public DbSet<User> Users { get; set; }
 
         public LendGamesContext()
             : base("name=LendGamesContext")

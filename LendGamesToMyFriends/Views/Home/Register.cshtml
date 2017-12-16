@@ -1,0 +1,40 @@
+﻿@model LendGamesToMyFriends.Models.User
+
+@{
+    ViewBag.Title = "Registre-se";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
+
+<h2>Registre-se</h2>
+@using (Html.BeginForm("Register", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Name, "Seu Nome:")
+        @Html.TextBoxFor(p => p.Name, new { @class = "form-control", required = "required" })
+        @Html.ValidationMessageFor(p => p.Name)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.LastName, "Seu Sobrenome:")
+        @Html.TextBoxFor(p => p.LastName, new { @class = "form-control", required = "required" })
+        @Html.ValidationMessageFor(p => p.LastName)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.Email, "Seu E-mail:")
+        @Html.TextBoxFor(p => p.Email, new { @class = "form-control", type = "email", required = "required" })
+        @Html.ValidationMessageFor(p => p.Email)
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(p => p.Password, "Sua Senha:")
+        @Html.TextBoxFor(p => p.Password, new { @class = "form-control", type = "password", required = "required" })
+        @Html.ValidationMessageFor(p => p.Password)
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary" type="submit">Cadastrar!</button>
+    </div>
+}

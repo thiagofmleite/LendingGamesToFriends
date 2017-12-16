@@ -46,6 +46,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -154,15 +157,26 @@
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAOs\GamesDAO.cs" />
+    <Compile Include="DAOs\IGamesDAO.cs" />
+    <Compile Include="DAOs\IUsersDAO.cs" />
+    <Compile Include="DAOs\UsersDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mappers\AutoMappeConfig.cs" />
+    <Compile Include="Mappers\MappingProfile.cs" />
     <Compile Include="Migrations\201712161553120_createGames.cs" />
     <Compile Include="Migrations\201712161553120_createGames.Designer.cs">
       <DependentUpon>201712161553120_createGames.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712161823544_createUser.cs" />
+    <Compile Include="Migrations\201712161823544_createUser.Designer.cs">
+      <DependentUpon>201712161823544_createUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserReference.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -203,10 +217,11 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Game\Index.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Home\NewUser.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -225,6 +240,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712161553120_createGames.resx">
       <DependentUpon>201712161553120_createGames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712161823544_createUser.resx">
+      <DependentUpon>201712161823544_createUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
