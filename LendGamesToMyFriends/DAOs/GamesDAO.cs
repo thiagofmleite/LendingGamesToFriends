@@ -17,14 +17,16 @@ namespace LendGamesToMyFriends.DAOs
             context = new LendGamesContext();
         }
 
-        public Game Save(Game game)
+        public Game Save(Game game, UserReference user)
         {
+            game.User = user;
+            game.Status = true;
             context.Games.Add(game);
             context.SaveChanges();
             return game;
         }
 
-        public void Update(Game game)
+        public void Update(Game game, UserReference user)
         {
             try
             {
@@ -37,7 +39,7 @@ namespace LendGamesToMyFriends.DAOs
             }
         }
 
-        public IEnumerable<Game> GetAll()
+        public IEnumerable<Game> GetAll(UserReference user)
         {
             IList<Game> games = new List<Game>();
             try
@@ -51,20 +53,20 @@ namespace LendGamesToMyFriends.DAOs
             return games;
         }
 
-        public Game GetById(int id)
+        public Game GetById(int id, UserReference user)
         {
             Game game = context.Games.FirstOrDefault(g => g.Id.Equals(id));
             return game;
         }
 
-        public IEnumerable<Game> FindByTitle(string title)
+        public IEnumerable<Game> FindByTitle(string title, UserReference user)
         {
             return context.Games.Where(g => g.Title.ToLower().Contains(title.ToLower())).ToList();
         }
 
-        public void Remove(int id)
+        public void Remove(int id, UserReference user)
         {
-            Game game = GetById(id);
+            Game game = GetById(id, user);
             context.Games.Remove(game);
             context.SaveChanges();
         }

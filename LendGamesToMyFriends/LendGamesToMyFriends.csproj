@@ -173,6 +173,18 @@
     <Compile Include="Migrations\201712161823544_createUser.Designer.cs">
       <DependentUpon>201712161823544_createUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712162034050_VinculoUserGame.cs" />
+    <Compile Include="Migrations\201712162034050_VinculoUserGame.Designer.cs">
+      <DependentUpon>201712162034050_VinculoUserGame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712162151032_GameIdNullable.cs" />
+    <Compile Include="Migrations\201712162151032_GameIdNullable.Designer.cs">
+      <DependentUpon>201712162151032_GameIdNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712162153583_GameIdNotNullable.cs" />
+    <Compile Include="Migrations\201712162153583_GameIdNotNullable.Designer.cs">
+      <DependentUpon>201712162153583_GameIdNotNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\User.cs" />
@@ -222,6 +234,7 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\NewUser.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Game\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -243,6 +256,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712161823544_createUser.resx">
       <DependentUpon>201712161823544_createUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712162034050_VinculoUserGame.resx">
+      <DependentUpon>201712162034050_VinculoUserGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712162151032_GameIdNullable.resx">
+      <DependentUpon>201712162151032_GameIdNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712162153583_GameIdNotNullable.resx">
+      <DependentUpon>201712162153583_GameIdNotNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
