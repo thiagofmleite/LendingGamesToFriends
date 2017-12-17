@@ -30,8 +30,15 @@ namespace LendGamesToMyFriends.DAOs
         {
             try
             {
-                context.Games.AddOrUpdate(game);
-                context.SaveChanges();
+                if (context.Games.Any(g => g.Id.Equals(game.Id) && g.User.Id.Equals(user.Id)))
+                {
+                    context.Games.AddOrUpdate(game);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    throw new Exception("Jogo não encontrado");
+                }
             }
             catch (Exception ex)
             {

@@ -51,8 +51,7 @@ namespace LendGamesToMyFriends.DAOs
 
         public bool UserExists(string email)
         {
-            var user = GetUserByEmail(email);
-            return (user != null);
+            return context.Users.Any(u => u.Email.Equals(email));
         }
 
         private string ConvertToMD5(string text)

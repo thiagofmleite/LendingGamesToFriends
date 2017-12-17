@@ -154,9 +154,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Context\LendGamesContext.cs" />
+    <Compile Include="Controllers\FriendController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAOs\FriendsDAO.cs" />
     <Compile Include="DAOs\GamesDAO.cs" />
+    <Compile Include="DAOs\IFriendsDAO.cs" />
     <Compile Include="DAOs\IGamesDAO.cs" />
     <Compile Include="DAOs\IUsersDAO.cs" />
     <Compile Include="DAOs\UsersDAO.cs" />
@@ -185,7 +188,12 @@
     <Compile Include="Migrations\201712162153583_GameIdNotNullable.Designer.cs">
       <DependentUpon>201712162153583_GameIdNotNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712171116592_FriendsCRUD.cs" />
+    <Compile Include="Migrations\201712171116592_FriendsCRUD.Designer.cs">
+      <DependentUpon>201712171116592_FriendsCRUD.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserReference.cs" />
@@ -235,6 +243,8 @@
     <Content Include="Views\Home\NewUser.cshtml" />
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Game\Edit.cshtml" />
+    <Content Include="Views\Friend\Index.cshtml" />
+    <Content Include="Views\Friend\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -265,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712162153583_GameIdNotNullable.resx">
       <DependentUpon>201712162153583_GameIdNotNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712171116592_FriendsCRUD.resx">
+      <DependentUpon>201712171116592_FriendsCRUD.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

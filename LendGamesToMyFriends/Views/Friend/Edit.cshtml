@@ -1,0 +1,49 @@
+﻿@model LendGamesToMyFriends.Models.Friend
+
+@{
+    if (Model != null)
+    {
+        ViewBag.Title = "Editar Amigo: " + Model.Name;
+    }
+    else
+    {
+        ViewBag.Title = "Novo Amigo";
+    }
+}
+
+<h2>@ViewBag.Title</h2>
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger" role="alert">@TempData["Error"].ToString()</div>
+}
+@using (Html.BeginForm(Model != null ? "Edit" : "New", "Friend", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="row">
+        <div class="form-group col-md-6 col-xs-12">
+            @Html.LabelFor(f => f.Name, "Nome do Amigo:")
+            @Html.TextBoxFor(f => f.Name, new { @class = "form-control", required = "required" })
+            @Html.ValidationMessageFor(f => f.Name)
+        </div>
+        <div class="form-group col-md-6 col-xs-12">
+            @Html.LabelFor(f => f.LastName, "Sobrenome do Amigo:")
+            @Html.TextBoxFor(f => f.LastName, new { @class = "form-control", required = "required" })
+            @Html.ValidationMessageFor(f => f.LastName)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.ActionLink("Voltar", "Index", new { @class = "btn btn-default" })
+        <button class="btn btn-primary" type="submit">Salvar</button>
+    </div>
+}
+
+@if (Model != null)
+{
+    <hr />
+    <div class="form-group">
+        @Html.ActionLink("Remover Jogo", "Delete", new { id = Model.Id }, new { @class = "btn btn-danger" })
+    </div>
+}

@@ -8,26 +8,39 @@ using System.Web.Mvc;
 
 namespace LendGamesToMyFriends.Controllers
 {
-    public class GameController : Controller
+    public class FriendController : Controller
     {
-        private IGamesDAO dao;
+        private IFriendsDAO dao;
         private UserReference user;
 
-        public GameController()
+        public FriendController()
         {
-            dao = new GamesDAO();
+            dao = new FriendsDAO();
         }
 
-        // GET: Game
+        // GET: Friend
         public ActionResult Index()
         {
-            user = Session["authenticated"] as UserReference;
-            if (user == null)
+            if (TempData["Error"] != null)
             {
-                return RedirectToAction("Index", "Home");
+                ViewBag.Error = TempData["Error"].ToString();
+                TempData.Remove("Error");
             }
-            var games = dao.GetAll(user);
-            return View(games);
+            try
+            {
+                user = Session["authenticated"] as UserReference;
+                if (user == null)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                var friends = dao.GetAll(user);
+                return View(friends);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Não foi possível listar os amigos: " + ex.Message;
+                return View();
+            }
         }
 
         public ActionResult New()
@@ -41,7 +54,7 @@ namespace LendGamesToMyFriends.Controllers
         }
 
         [HttpPost]
-        public ActionResult New(Game game)
+        public ActionResult New(Friend friend)
         {
             user = Session["authenticated"] as UserReference;
             if (user == null)
@@ -50,15 +63,14 @@ namespace LendGamesToMyFriends.Controllers
             }
             try
             {
-                game = dao.Save(game, user);
+                friend = dao.Save(friend, user);
             }
             catch (Exception)
             {
-                return View("Edit", game);
+                return View("Edit", friend);
             }
             return RedirectToAction("Index");
         }
-
 
         public ActionResult Edit(int? id)
         {
@@ -71,12 +83,12 @@ namespace LendGamesToMyFriends.Controllers
             {
                 try
                 {
-                    var game = dao.GetById(id.Value, user);
-                    return View(game);
+                    var friend = dao.GetById(id.Value, user);
+                    return View(friend);
                 }
                 catch (Exception ex)
                 {
-                    TempData["Error"] = "Não foi possível carregar o jogo. " + ex.Message;
+                    TempData["Error"] = "Não foi possível carregar o amigo. " + ex.Message;
                     return RedirectToAction("Index");
                 }
             }
@@ -84,7 +96,7 @@ namespace LendGamesToMyFriends.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Game game)
+        public ActionResult Edit(Friend friend)
         {
             user = Session["authenticated"] as UserReference;
             if (user == null)
@@ -93,12 +105,12 @@ namespace LendGamesToMyFriends.Controllers
             }
             try
             {
-                dao.Update(game, user);
+                dao.Update(friend, user);
             }
             catch (Exception ex)
             {
-                ViewBag.Error = "Não foi possível editar o jogo. " + ex.Message;
-                return View("Edit", game);
+                ViewBag.Error = "Não foi possível editar o amigo. " + ex.Message;
+                return View("Edit", friend);
             }
             return RedirectToAction("Index");
         }
@@ -117,10 +129,10 @@ namespace LendGamesToMyFriends.Controllers
             }
             catch (Exception ex)
             {
-                TempData["Error"] = "Não foi possível remover o jogo. " + ex.Message;
+                TempData["Error"] = "Não foi possível remover o amigo. " + ex.Message;
                 return RedirectToAction("Index");
             }
         }
-    }
 
+    }
 }
