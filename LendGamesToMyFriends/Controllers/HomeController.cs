@@ -8,10 +8,12 @@ namespace LendGamesToMyFriends.Controllers
     public class HomeController : Controller
     {
         private IUsersDAO dao;
+        private IGamesDAO gamesDao;
 
         public HomeController()
         {
             dao = new UsersDAO();
+            gamesDao = new GamesDAO();
         }
 
         public ActionResult Index()
@@ -103,14 +105,23 @@ namespace LendGamesToMyFriends.Controllers
 
         public ActionResult Dashboard()
         {
-            if (Session["authenticated"] == null)
+            var user = Session["authenticated"] as UserReference;
+            if (user == null)
             {
                 return RedirectToAction("Index");
             }
             else
             {
-                return View();
+
+                var games = gamesDao.GetAll(user);
+                return View(games);
             }
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Abandon();
+            return RedirectToAction("Index");
         }
     }
 
