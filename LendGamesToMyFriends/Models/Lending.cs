@@ -10,7 +10,7 @@ namespace LendGamesToMyFriends.Models
         public Guid Id { get; set; }
         public virtual Friend Friend { get; set; }
         public virtual Game Game { get; set; }
-        public virtual UserReference User { get; set; }
+        public virtual User User { get; set; }
         public DateTime LendDate { get; set; }
     }
 }

@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "Novo Empréstimo";
+}
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
+<h2>Emprestar jogo</h2>
+@using (Html.BeginForm("New", "Lending", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="row">
+        <div class="form-group col-md-6 col-xs-12">
+            @Html.Label("friendId", "Amigo:")
+            @Html.DropDownList("friendId", ViewBag.Friends as List<SelectListItem>, new { @class = "form-control" })
+        </div>
+        <div class="form-group col-md-6 col-xs-12">
+            @Html.Label("gameId", "Jogo:")
+            @Html.DropDownList("gameId", ViewBag.Games as List<SelectListItem>, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-default" })
+            <button class="btn btn-primary" type="submit">Salvar</button>
+        </div>
+    </div>
+}
+

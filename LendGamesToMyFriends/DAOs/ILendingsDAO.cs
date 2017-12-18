@@ -9,12 +9,12 @@ namespace LendGamesToMyFriends.DAOs
 {
     public interface ILendingsDAO
     {
-        Lending Save(Lending lending, User user);
-        IEnumerable<Lending> GetAll(User user);
-        Lending GetById(Guid id, User user);
-        IEnumerable<Lending> GetByFriend(Friend friend, User user);
-        IEnumerable<Lending> GetByGame(Game game, User user);
-        void Update(Lending lending, User user);
-        void Remove(Lending lending, User user);
+        Lending Save(Lending lending, UserReference user);
+        IEnumerable<Lending> GetAll(UserReference user);
+        Lending GetById(Guid id, UserReference user);
+        IEnumerable<Lending> GetByFriend(Friend friend, UserReference user);
+        IEnumerable<Lending> GetByGame(Game game, UserReference user);
+        void Update(Lending lending, UserReference user);
+        void Remove(Lending lending, UserReference user);
     }
 }

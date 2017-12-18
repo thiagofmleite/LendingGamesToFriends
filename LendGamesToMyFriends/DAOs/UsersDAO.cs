@@ -7,7 +7,7 @@ using System.Text;
 
 namespace LendGamesToMyFriends.DAOs
 {
-    public class UsersDAO : IUsersDAO
+    public class UsersDAO : IUsersDAO, IDisposable
     {
         private LendGamesContext context;
 
@@ -65,6 +65,11 @@ namespace LendGamesToMyFriends.DAOs
                 builder.Append(hash[i].ToString("X2"));
             }
             return builder.ToString();
+        }
+
+        public void Dispose()
+        {
+            context.Dispose();
         }
     }
 }

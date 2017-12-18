@@ -157,12 +157,14 @@
     <Compile Include="Controllers\FriendController.cs" />
     <Compile Include="Controllers\GameController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LendingController.cs" />
     <Compile Include="DAOs\FriendsDAO.cs" />
     <Compile Include="DAOs\GamesDAO.cs" />
     <Compile Include="DAOs\IFriendsDAO.cs" />
     <Compile Include="DAOs\IGamesDAO.cs" />
     <Compile Include="DAOs\ILendingsDAO.cs" />
     <Compile Include="DAOs\IUsersDAO.cs" />
+    <Compile Include="DAOs\LendingsDAO.cs" />
     <Compile Include="DAOs\UsersDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -229,6 +231,8 @@
     <Content Include="Views\Game\Edit.cshtml" />
     <Content Include="Views\Friend\Index.cshtml" />
     <Content Include="Views\Friend\Edit.cshtml" />
+    <Content Include="Views\Lending\New.cshtml" />
+    <Content Include="Views\Lending\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712180150417_EstruturaBase.resx">
@@ -248,6 +252,7 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

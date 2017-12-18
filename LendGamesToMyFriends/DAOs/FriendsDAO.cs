@@ -8,7 +8,7 @@ using System.Data.Entity.Migrations;
 
 namespace LendGamesToMyFriends.DAOs
 {
-    public class FriendsDAO : IFriendsDAO
+    public class FriendsDAO : IFriendsDAO, IDisposable
     {
         private LendGamesContext context;
 
@@ -71,6 +71,11 @@ namespace LendGamesToMyFriends.DAOs
         public bool IsMyFriend(Friend friend, UserReference user)
         {
             return context.Friends.Any(f => f.Id.Equals(friend.Id) && f.User.Id.Equals(user.Id));
+        }
+
+        public void Dispose()
+        {
+            context.Dispose();
         }
     }
 }

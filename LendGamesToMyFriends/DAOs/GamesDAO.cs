@@ -8,7 +8,7 @@ using System.Web;
 
 namespace LendGamesToMyFriends.DAOs
 {
-    public class GamesDAO : IGamesDAO
+    public class GamesDAO : IGamesDAO, IDisposable
     {
         private LendGamesContext context;
 
@@ -91,6 +91,11 @@ namespace LendGamesToMyFriends.DAOs
         public bool IsMyGame(Game game, UserReference user)
         {
             return context.Games.Any(g => g.Id.Equals(game.Id) && g.User.Id.Equals(user.Id));
+        }
+
+        public void Dispose()
+        {
+            context.Dispose();
         }
     }
 }
