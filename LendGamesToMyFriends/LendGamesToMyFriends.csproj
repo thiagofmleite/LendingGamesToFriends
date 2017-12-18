@@ -161,6 +161,7 @@
     <Compile Include="DAOs\GamesDAO.cs" />
     <Compile Include="DAOs\IFriendsDAO.cs" />
     <Compile Include="DAOs\IGamesDAO.cs" />
+    <Compile Include="DAOs\ILendingsDAO.cs" />
     <Compile Include="DAOs\IUsersDAO.cs" />
     <Compile Include="DAOs\UsersDAO.cs" />
     <Compile Include="Global.asax.cs">
@@ -168,33 +169,15 @@
     </Compile>
     <Compile Include="Mappers\AutoMappeConfig.cs" />
     <Compile Include="Mappers\MappingProfile.cs" />
-    <Compile Include="Migrations\201712161553120_createGames.cs" />
-    <Compile Include="Migrations\201712161553120_createGames.Designer.cs">
-      <DependentUpon>201712161553120_createGames.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712161823544_createUser.cs" />
-    <Compile Include="Migrations\201712161823544_createUser.Designer.cs">
-      <DependentUpon>201712161823544_createUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712162034050_VinculoUserGame.cs" />
-    <Compile Include="Migrations\201712162034050_VinculoUserGame.Designer.cs">
-      <DependentUpon>201712162034050_VinculoUserGame.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712162151032_GameIdNullable.cs" />
-    <Compile Include="Migrations\201712162151032_GameIdNullable.Designer.cs">
-      <DependentUpon>201712162151032_GameIdNullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712162153583_GameIdNotNullable.cs" />
-    <Compile Include="Migrations\201712162153583_GameIdNotNullable.Designer.cs">
-      <DependentUpon>201712162153583_GameIdNotNullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712171116592_FriendsCRUD.cs" />
-    <Compile Include="Migrations\201712171116592_FriendsCRUD.Designer.cs">
-      <DependentUpon>201712171116592_FriendsCRUD.cs</DependentUpon>
+    <Compile Include="Migrations\201712180150417_EstruturaBase.cs" />
+    <Compile Include="Migrations\201712180150417_EstruturaBase.Designer.cs">
+      <DependentUpon>201712180150417_EstruturaBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\Game.cs" />
+    <Compile Include="Models\Lending.cs" />
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserReference.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -223,6 +206,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -246,7 +230,11 @@
     <Content Include="Views\Friend\Index.cshtml" />
     <Content Include="Views\Friend\Edit.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712180150417_EstruturaBase.resx">
+      <DependentUpon>201712180150417_EstruturaBase.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
@@ -259,26 +247,6 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712161553120_createGames.resx">
-      <DependentUpon>201712161553120_createGames.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712161823544_createUser.resx">
-      <DependentUpon>201712161823544_createUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712162034050_VinculoUserGame.resx">
-      <DependentUpon>201712162034050_VinculoUserGame.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712162151032_GameIdNullable.resx">
-      <DependentUpon>201712162151032_GameIdNullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712162153583_GameIdNotNullable.resx">
-      <DependentUpon>201712162153583_GameIdNotNullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712171116592_FriendsCRUD.resx">
-      <DependentUpon>201712171116592_FriendsCRUD.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

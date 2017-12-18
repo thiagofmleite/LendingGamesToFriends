@@ -22,7 +22,7 @@ namespace LendGamesToMyFriends.DAOs
             return context.Friends.Where(f => f.User.Id.Equals(user.Id));
         }
 
-        public Friend GetById(int id, UserReference user)
+        public Friend GetById(Guid id, UserReference user)
         {
             return context.Friends.FirstOrDefault(f => f.Id.Equals(id) && f.User.Id.Equals(user.Id));
         }
@@ -33,7 +33,7 @@ namespace LendGamesToMyFriends.DAOs
             return context.Friends.Where(f => (f.Name.ToLower().Contains(name) || f.LastName.ToLower().Contains(name)) && f.User.Id.Equals(user.Id));
         }
 
-        public void Remove(int id, UserReference user)
+        public void Remove(Guid id, UserReference user)
         {
             var friend = GetById(id, user);
             context.Friends.Remove(friend);
@@ -42,6 +42,7 @@ namespace LendGamesToMyFriends.DAOs
 
         public Friend Save(Friend friend, UserReference user)
         {
+            friend.Id = Guid.NewGuid();
             friend.User = user;
             friend = context.Friends.Add(friend);
             context.SaveChanges();
@@ -52,7 +53,7 @@ namespace LendGamesToMyFriends.DAOs
         {
             try
             {
-                if (context.Friends.Any(f => f.Id.Equals(friend.Id) && f.User.Id.Equals(user.Id)))
+                if (IsMyFriend(friend, user))
                 {
                     context.Friends.AddOrUpdate(friend);
                 }
@@ -65,6 +66,11 @@ namespace LendGamesToMyFriends.DAOs
             {
                 throw new Exception("Não foi possível alterar o amigo");
             }
+        }
+
+        public bool IsMyFriend(Friend friend, UserReference user)
+        {
+            return context.Friends.Any(f => f.Id.Equals(friend.Id) && f.User.Id.Equals(user.Id));
         }
     }
 }

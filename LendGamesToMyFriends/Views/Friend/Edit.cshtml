@@ -1,13 +1,13 @@
 ﻿@model LendGamesToMyFriends.Models.Friend
 
 @{
-    if (Model != null)
+    if (Model.Id.Equals(Guid.Empty))
     {
-        ViewBag.Title = "Editar Amigo: " + Model.Name;
+        ViewBag.Title = "Novo Amigo";
     }
     else
     {
-        ViewBag.Title = "Novo Amigo";
+        ViewBag.Title = "Editar Amigo: " + Model.Name;
     }
 }
 
@@ -16,7 +16,7 @@
 {
     <div class="alert alert-danger" role="alert">@TempData["Error"].ToString()</div>
 }
-@using (Html.BeginForm(Model != null ? "Edit" : "New", "Friend", FormMethod.Post))
+@using (Html.BeginForm(!Model.Id.Equals(Guid.Empty) ? "Edit" : "New", "Friend", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Id)
@@ -35,12 +35,12 @@
     </div>
 
     <div class="form-group">
-        @Html.ActionLink("Voltar", "Index", new { @class = "btn btn-default" })
+        @Html.ActionLink("Voltar", "Index", null, new { @class = "btn btn-default" })
         <button class="btn btn-primary" type="submit">Salvar</button>
     </div>
 }
 
-@if (Model != null)
+@if (!Model.Id.Equals(Guid.Empty))
 {
     <hr />
     <div class="form-group">

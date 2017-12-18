@@ -7,6 +7,6 @@ namespace LendGamesToMyFriends.DAOs
         User Register(User user);
         User GetUserByEmail(string email);
         bool UserExists(string email);
-        UserReference Authenticate(string email, string password);
+        UserReference Authenticate(Login login);
     }
 }

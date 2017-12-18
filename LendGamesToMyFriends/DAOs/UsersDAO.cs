@@ -16,10 +16,10 @@ namespace LendGamesToMyFriends.DAOs
             context = new LendGamesContext();
         }
 
-        public UserReference Authenticate(string email, string password)
+        public UserReference Authenticate(Login login)
         {
-            var user = GetUserByEmail(email);
-            var md5pass = ConvertToMD5(password);
+            var user = GetUserByEmail(login.Email);
+            var md5pass = ConvertToMD5(login.Password);
             if(user.Password != md5pass)
             {
                 throw new Exception("Senha inválida");

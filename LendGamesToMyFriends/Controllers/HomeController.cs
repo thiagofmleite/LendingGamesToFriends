@@ -69,25 +69,26 @@ namespace LendGamesToMyFriends.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string email, string password)
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(Login login)
         {
-            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
+            if (!ModelState.IsValid)
             {
                 ViewBag.Error = "E-mail e senha são obrigatórios";
-                return RedirectToAction("Index");
+                return View("Index");
             }
             else
             {
                 try
                 {
-                    if (!dao.UserExists(email))
+                    if (!dao.UserExists(login.Email))
                     {
                         ViewBag.Error = "Usuário não registrado";
-                        return RedirectToAction("Index");
+                        return View("Index");
                     }
                     else
                     {
-                        var referencedUser = dao.Authenticate(email, password);
+                        var referencedUser = dao.Authenticate(login);
                         Session.Add("authenticated", referencedUser);
                         return RedirectToAction("Dashboard");
                     }

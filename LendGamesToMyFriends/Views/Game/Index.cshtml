@@ -10,15 +10,23 @@
 }
 <div class="row">
     <div class="form-group">
-        @Html.ActionLink("Novo", "New", "Game", new { @class = "btn btn-primary btn-lg" })
+        @Html.ActionLink("Adicionar novo jogo", "New", null, new { @class = "btn btn-primary btn-lg" })
     </div>
 </div>
 <div class="row">
-    <div class="list-group">
-        @foreach (var game in Model)
-        {
-
-            @Html.ActionLink(game.Title, "Edit", "Game", new { id = game.Id }, new { @class = "list-group-item" })
-        }
-    </div>
+    @foreach (var game in Model)
+    {
+        <div class="col-sm-6 col-md-3">
+            <div class="thumbnail">
+                <img src="@(string.IsNullOrEmpty(game.Cover) ? "data:image/webp;base64,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" : game.Cover)" class="img-responsive" alt="@game.Title">
+                <div class="caption">
+                    <h3>@game.Title</h3>
+                    <p>
+                        @Html.ActionLink("Editar", "Edit", "Game", new { id = game.Id }, new { @class = "btn btn-primary", role = "button" })
+                        @Html.ActionLink("Remover", "Delete", new { id = game.Id }, new { @class = "btn btn-danger", role = "button" })
+                    </p>
+                </div>
+            </div>
+        </div>
+    }
 </div>

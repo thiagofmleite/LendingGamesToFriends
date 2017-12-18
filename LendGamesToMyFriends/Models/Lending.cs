@@ -5,11 +5,12 @@ using System.Web;
 
 namespace LendGamesToMyFriends.Models
 {
-    public class Friend
+    public class Lending
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
-        public string LastName { get; set; }
+        public virtual Friend Friend { get; set; }
+        public virtual Game Game { get; set; }
         public virtual UserReference User { get; set; }
+        public DateTime LendDate { get; set; }
     }
 }

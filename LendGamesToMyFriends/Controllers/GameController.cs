@@ -37,7 +37,7 @@ namespace LendGamesToMyFriends.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
-            return View("Edit");
+            return View("Edit", new Game());
         }
 
         [HttpPost]
@@ -60,7 +60,7 @@ namespace LendGamesToMyFriends.Controllers
         }
 
 
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(Guid? id)
         {
             user = Session["authenticated"] as UserReference;
             if (user == null)
@@ -103,7 +103,7 @@ namespace LendGamesToMyFriends.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(Guid id)
         {
             user = Session["authenticated"] as UserReference;
             if (user == null)
