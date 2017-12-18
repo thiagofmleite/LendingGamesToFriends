@@ -93,9 +93,9 @@ namespace LendGamesToMyFriends.Controllers
                         return RedirectToAction("Dashboard");
                     }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    ViewBag.Error = "E-mail e senha são obrigatórios";
+                    ViewBag.Error = "Não foi possível entrar no sistem: " + ex.Message;
                     return RedirectToAction("Index");
                 }
             }

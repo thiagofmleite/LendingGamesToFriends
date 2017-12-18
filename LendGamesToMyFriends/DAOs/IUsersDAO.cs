@@ -1,8 +1,9 @@
 ﻿using LendGamesToMyFriends.Models;
+using System;
 
 namespace LendGamesToMyFriends.DAOs
 {
-    public interface IUsersDAO
+    public interface IUsersDAO : IDisposable
     {
         User Register(User user);
         User GetUserByEmail(string email);

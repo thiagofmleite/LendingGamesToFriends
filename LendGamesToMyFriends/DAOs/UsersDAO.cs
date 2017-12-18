@@ -7,7 +7,7 @@ using System.Text;
 
 namespace LendGamesToMyFriends.DAOs
 {
-    public class UsersDAO : IUsersDAO, IDisposable
+    public class UsersDAO : IUsersDAO
     {
         private LendGamesContext context;
 
@@ -43,6 +43,7 @@ namespace LendGamesToMyFriends.DAOs
 
         public User Register(User user)
         {
+            user.Id = Guid.NewGuid();
             user.Password = ConvertToMD5(user.Password);
             user = context.Users.Add(user);
             context.SaveChanges();

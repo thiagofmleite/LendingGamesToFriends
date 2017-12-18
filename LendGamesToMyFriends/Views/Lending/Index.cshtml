@@ -1,7 +1,37 @@
-﻿
+﻿@model IEnumerable<LendGamesToMyFriends.Models.Lending>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Meus jogos emprestados";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
+<div class="row clearfix">
+    <div class="form-group pull-right">
+        @Html.ActionLink("Emprestar Jogo", "New", null, new { @class = "btn btn-primary btn-lg" })
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Jogo</th>
+                <th>Amigo</th>
+                <th>Emprestado Em</th>
+                <th>Devolvido Em</th>
+                <th>Devolver</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var lending in Model)
+            {
+                <tr>
+                    <td>@lending.Game.Title</td>
+                    <td>@lending.Friend.Name @lending.Friend.LastName</td>
+                    <td>@lending.LendDate</td>
+                    <td>@(lending.Status ? lending.ReturnDate.ToString() : "Não devolvido")</td>
+                    <td><button type="button" class="btn btn-sm @(lending.Status ? "btn-default disabled" : "btn-success")" onclick="returnGame('@lending.Id');">Devolver</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
 

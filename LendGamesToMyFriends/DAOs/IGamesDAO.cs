@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace LendGamesToMyFriends.DAOs
 {
-    public interface IGamesDAO
+    public interface IGamesDAO : IDisposable
     {
         Game Save(Game game, UserReference user);
         void Update(Game game, UserReference user);

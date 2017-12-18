@@ -13,3 +13,18 @@
     }
 
 }
+
+function returnGame(id) {
+    $.ajax({
+        type: 'GET',
+        url: '../Lending/Return/' + id
+    })
+        .done(function (response, status, xhr) {
+            swal({ title: 'Sucesso', text: 'O jogo foi devolvido com sucesso', type: 'success' }, function () {
+                location.reload();
+            });
+        }).fail(function (response, xhd) {
+            console.error(response);
+            swal({ title: 'Erro', text: 'Não foi possível realizar a devolução', type: 'error' });
+        });
+}

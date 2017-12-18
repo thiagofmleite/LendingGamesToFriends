@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace LendGamesToMyFriends.DAOs
 {
-    public interface ILendingsDAO
+    public interface ILendingsDAO : IDisposable
     {
         Lending Save(Lending lending, UserReference user);
         IEnumerable<Lending> GetAll(UserReference user);

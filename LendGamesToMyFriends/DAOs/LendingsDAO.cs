@@ -4,10 +4,11 @@ using System.Linq;
 using System.Web;
 using LendGamesToMyFriends.Models;
 using LendGamesToMyFriends.Context;
+using System.Data.Entity.Migrations;
 
 namespace LendGamesToMyFriends.DAOs
 {
-    public class LendingsDAO : ILendingsDAO, IDisposable
+    public class LendingsDAO : ILendingsDAO
     {
         private LendGamesContext context;
 
@@ -23,7 +24,7 @@ namespace LendGamesToMyFriends.DAOs
 
         public IEnumerable<Lending> GetAll(UserReference user)
         {
-            throw new NotImplementedException();
+            return context.Lendings.Where(l => l.User.Id.Equals(user.Id)).ToList();
         }
 
         public IEnumerable<Lending> GetByFriend(Friend friend, UserReference user)
@@ -38,7 +39,7 @@ namespace LendGamesToMyFriends.DAOs
 
         public Lending GetById(Guid id, UserReference user)
         {
-            throw new NotImplementedException();
+            return context.Lendings.FirstOrDefault(l => l.Id.Equals(id) && l.User.Id.Equals(user.Id));
         }
 
         public void Remove(Lending lending, UserReference user)
@@ -58,7 +59,18 @@ namespace LendGamesToMyFriends.DAOs
 
         public void Update(Lending lending, UserReference user)
         {
-            throw new NotImplementedException();
+            if (context.Lendings.Any(l => l.Id.Equals(lending.Id) && l.User.Id.Equals(user.Id)))
+            {
+                lending.User = context.Users.FirstOrDefault(u => u.Id.Equals(user.Id));
+                lending.ReturnDate = DateTime.Now;
+                lending.Status = true;
+                context.Lendings.AddOrUpdate(lending);
+                context.SaveChanges();
+            }
+            else
+            {
+                throw new Exception("Esse registro não está em seu nome");
+            }
         }
     }
 }

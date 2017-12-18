@@ -8,7 +8,7 @@ using System.Data.Entity.Migrations;
 
 namespace LendGamesToMyFriends.DAOs
 {
-    public class FriendsDAO : IFriendsDAO, IDisposable
+    public class FriendsDAO : IFriendsDAO
     {
         private LendGamesContext context;
 

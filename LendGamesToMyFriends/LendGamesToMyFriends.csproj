@@ -175,6 +175,18 @@
     <Compile Include="Migrations\201712180150417_EstruturaBase.Designer.cs">
       <DependentUpon>201712180150417_EstruturaBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712181456458_ForeignKeyLending.cs" />
+    <Compile Include="Migrations\201712181456458_ForeignKeyLending.Designer.cs">
+      <DependentUpon>201712181456458_ForeignKeyLending.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712181516047_LendingReturn.cs" />
+    <Compile Include="Migrations\201712181516047_LendingReturn.Designer.cs">
+      <DependentUpon>201712181516047_LendingReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712181535469_ReturnDateNullable.cs" />
+    <Compile Include="Migrations\201712181535469_ReturnDateNullable.Designer.cs">
+      <DependentUpon>201712181535469_ReturnDateNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Friend.cs" />
     <Compile Include="Models\Game.cs" />
@@ -212,6 +224,47 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\sweetalert\dev\gulpfile-wrap-template.js" />
+    <Content Include="Scripts\sweetalert\dev\ie9.css" />
+    <Content Include="Scripts\sweetalert\dev\loader-animation.css" />
+    <Content Include="Scripts\sweetalert\dev\modules\default-params.js" />
+    <Content Include="Scripts\sweetalert\dev\modules\handle-click.js" />
+    <Content Include="Scripts\sweetalert\dev\modules\handle-dom.js" />
+    <Content Include="Scripts\sweetalert\dev\modules\handle-key.js" />
+    <Content Include="Scripts\sweetalert\dev\modules\handle-swal-dom.js" />
+    <Content Include="Scripts\sweetalert\dev\modules\injected-html.js" />
+    <Content Include="Scripts\sweetalert\dev\modules\set-params.js" />
+    <Content Include="Scripts\sweetalert\dev\modules\utils.js" />
+    <Content Include="Scripts\sweetalert\dev\sweetalert.es6.js" />
+    <Content Include="Scripts\sweetalert\dist\sweetalert-dev.js" />
+    <Content Include="Scripts\sweetalert\dist\sweetalert.css" />
+    <Content Include="Scripts\sweetalert\dist\sweetalert.min.js" />
+    <Content Include="Scripts\sweetalert\example\example.css" />
+    <Content Include="Scripts\sweetalert\example\images\logo_big%402x.png" />
+    <Content Include="Scripts\sweetalert\example\images\logo_big.png" />
+    <Content Include="Scripts\sweetalert\example\images\logo_small%402x.png" />
+    <Content Include="Scripts\sweetalert\example\images\logo_small.png" />
+    <Content Include="Scripts\sweetalert\example\images\te-logo-small.svg" />
+    <Content Include="Scripts\sweetalert\example\images\thumbs-up.jpg" />
+    <Content Include="Scripts\sweetalert\example\images\vs_icon%402x.png" />
+    <Content Include="Scripts\sweetalert\example\images\vs_icon.png" />
+    <Content Include="Scripts\sweetalert\gulpfile.js" />
+    <Content Include="Scripts\sweetalert\index.html" />
+    <Content Include="Scripts\sweetalert\lib\modules\default-params.js" />
+    <Content Include="Scripts\sweetalert\lib\modules\handle-click.js" />
+    <Content Include="Scripts\sweetalert\lib\modules\handle-dom.js" />
+    <Content Include="Scripts\sweetalert\lib\modules\handle-key.js" />
+    <Content Include="Scripts\sweetalert\lib\modules\handle-swal-dom.js" />
+    <Content Include="Scripts\sweetalert\lib\modules\injected-html.js" />
+    <Content Include="Scripts\sweetalert\lib\modules\set-params.js" />
+    <Content Include="Scripts\sweetalert\lib\modules\utils.js" />
+    <Content Include="Scripts\sweetalert\lib\sweetalert.js" />
+    <Content Include="Scripts\sweetalert\sweetalert.gif" />
+    <Content Include="Scripts\sweetalert\test\index.html" />
+    <Content Include="Scripts\sweetalert\test\tests.js" />
+    <Content Include="Scripts\sweetalert\themes\facebook\facebook.css" />
+    <Content Include="Scripts\sweetalert\themes\google\google.css" />
+    <Content Include="Scripts\sweetalert\themes\twitter\twitter.css" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -233,10 +286,33 @@
     <Content Include="Views\Friend\Edit.cshtml" />
     <Content Include="Views\Lending\New.cshtml" />
     <Content Include="Views\Lending\Index.cshtml" />
+    <Content Include="Scripts\sweetalert\.bower.json" />
+    <Content Include="Scripts\sweetalert\.editorconfig" />
+    <Content Include="Scripts\sweetalert\.gitignore" />
+    <Content Include="Scripts\sweetalert\.jshintrc" />
+    <Content Include="Scripts\sweetalert\.travis.yml" />
+    <Content Include="Scripts\sweetalert\bower.json" />
+    <Content Include="Scripts\sweetalert\dev\sweetalert.scss" />
+    <Content Include="Scripts\sweetalert\example\example.scss" />
+    <Content Include="Scripts\sweetalert\LICENSE" />
+    <Content Include="Scripts\sweetalert\package.json" />
+    <Content Include="Scripts\sweetalert\README.md" />
+    <Content Include="Scripts\sweetalert\themes\facebook\facebook.scss" />
+    <Content Include="Scripts\sweetalert\themes\google\google.scss" />
+    <Content Include="Scripts\sweetalert\themes\twitter\twitter.scss" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712180150417_EstruturaBase.resx">
       <DependentUpon>201712180150417_EstruturaBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181456458_ForeignKeyLending.resx">
+      <DependentUpon>201712181456458_ForeignKeyLending.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181516047_LendingReturn.resx">
+      <DependentUpon>201712181516047_LendingReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712181535469_ReturnDateNullable.resx">
+      <DependentUpon>201712181535469_ReturnDateNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
