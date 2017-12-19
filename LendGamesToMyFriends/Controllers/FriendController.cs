@@ -19,7 +19,7 @@ namespace LendGamesToMyFriends.Controllers
         }
 
         // GET: Friend
-        public ActionResult Index()
+        public ActionResult Index(string name)
         {
             if (TempData["Error"] != null)
             {
@@ -33,7 +33,7 @@ namespace LendGamesToMyFriends.Controllers
                 {
                     return RedirectToAction("Index", "Home");
                 }
-                var friends = dao.GetAll(user);
+                var friends = (string.IsNullOrEmpty(name)) ? dao.GetAll(user) : dao.GetByName(name, user);
                 return View(friends);
             }
             catch (Exception ex)
@@ -64,12 +64,12 @@ namespace LendGamesToMyFriends.Controllers
             try
             {
                 friend = dao.Save(friend, user);
+                return RedirectToAction("Index");
             }
             catch (Exception)
             {
                 return View("Edit", friend);
             }
-            return RedirectToAction("Index");
         }
 
         public ActionResult Edit(Guid? id)

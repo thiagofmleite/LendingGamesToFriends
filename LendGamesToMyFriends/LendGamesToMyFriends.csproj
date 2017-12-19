@@ -171,21 +171,9 @@
     </Compile>
     <Compile Include="Mappers\AutoMappeConfig.cs" />
     <Compile Include="Mappers\MappingProfile.cs" />
-    <Compile Include="Migrations\201712180150417_EstruturaBase.cs" />
-    <Compile Include="Migrations\201712180150417_EstruturaBase.Designer.cs">
-      <DependentUpon>201712180150417_EstruturaBase.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712181456458_ForeignKeyLending.cs" />
-    <Compile Include="Migrations\201712181456458_ForeignKeyLending.Designer.cs">
-      <DependentUpon>201712181456458_ForeignKeyLending.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712181516047_LendingReturn.cs" />
-    <Compile Include="Migrations\201712181516047_LendingReturn.Designer.cs">
-      <DependentUpon>201712181516047_LendingReturn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712181535469_ReturnDateNullable.cs" />
-    <Compile Include="Migrations\201712181535469_ReturnDateNullable.Designer.cs">
-      <DependentUpon>201712181535469_ReturnDateNullable.cs</DependentUpon>
+    <Compile Include="Migrations\201712191449316_CorrigidaReferenciaAmigoUsuario.cs" />
+    <Compile Include="Migrations\201712191449316_CorrigidaReferenciaAmigoUsuario.Designer.cs">
+      <DependentUpon>201712191449316_CorrigidaReferenciaAmigoUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Friend.cs" />
@@ -302,20 +290,6 @@
     <Content Include="Scripts\sweetalert\themes\twitter\twitter.scss" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712180150417_EstruturaBase.resx">
-      <DependentUpon>201712180150417_EstruturaBase.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712181456458_ForeignKeyLending.resx">
-      <DependentUpon>201712181456458_ForeignKeyLending.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712181516047_LendingReturn.resx">
-      <DependentUpon>201712181516047_LendingReturn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712181535469_ReturnDateNullable.resx">
-      <DependentUpon>201712181535469_ReturnDateNullable.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
   </ItemGroup>
   <ItemGroup>
@@ -328,7 +302,11 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712191449316_CorrigidaReferenciaAmigoUsuario.resx">
+      <DependentUpon>201712191449316_CorrigidaReferenciaAmigoUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

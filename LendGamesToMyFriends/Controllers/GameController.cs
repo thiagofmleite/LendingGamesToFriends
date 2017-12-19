@@ -19,14 +19,14 @@ namespace LendGamesToMyFriends.Controllers
         }
 
         // GET: Game
-        public ActionResult Index()
+        public ActionResult Index(string title)
         {
             user = Session["authenticated"] as UserReference;
             if (user == null)
             {
                 return RedirectToAction("Index", "Home");
             }
-            var games = dao.GetAll(user);
+            var games = (string.IsNullOrEmpty(title)) ? dao.GetAll(user) : dao.FindByTitle(title, user);
             return View(games);
         }
 

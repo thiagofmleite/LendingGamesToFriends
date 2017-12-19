@@ -43,7 +43,7 @@ namespace LendGamesToMyFriends.DAOs
         public Friend Save(Friend friend, UserReference user)
         {
             friend.Id = Guid.NewGuid();
-            friend.User = user;
+            friend.User = context.Users.FirstOrDefault(u => u.Id.Equals(user.Id));
             friend = context.Friends.Add(friend);
             context.SaveChanges();
             return friend;
@@ -55,6 +55,7 @@ namespace LendGamesToMyFriends.DAOs
             {
                 if (IsMyFriend(friend, user))
                 {
+                    friend.User = context.Users.FirstOrDefault(u => u.Id.Equals(user.Id));
                     context.Friends.AddOrUpdate(friend);
                 }
                 else

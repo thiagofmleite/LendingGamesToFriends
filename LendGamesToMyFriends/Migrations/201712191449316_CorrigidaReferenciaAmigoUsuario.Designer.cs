@@ -7,13 +7,13 @@ namespace LendGamesToMyFriends.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class LendingReturn : IMigrationMetadata
+    public sealed partial class CorrigidaReferenciaAmigoUsuario : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(LendingReturn));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(CorrigidaReferenciaAmigoUsuario));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712181516047_LendingReturn"; }
+            get { return "201712191449316_CorrigidaReferenciaAmigoUsuario"; }
         }
         
         string IMigrationMetadata.Source

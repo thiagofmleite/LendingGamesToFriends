@@ -8,9 +8,23 @@
 {
     <div class="alert alert-danger" role="alert">@TempData["Error"].ToString()</div>
 }
-<div class="row">
-    <div class="form-group">
+<div class="row clearfix">
+    <div class="form-group pull-left">
         @Html.ActionLink("Adicionar novo jogo", "New", null, new { @class = "btn btn-primary btn-lg" })
+    </div>
+    <div class="pull-right">
+        @using (Html.BeginForm("Index", "Game", FormMethod.Get))
+        {
+            <div class="form-inline">
+                <div class="form-group">
+                    <label class="sr-only" for="title">Título do jogo</label>
+                    @Html.TextBox("title", null, new { @class = "form-control", placeholder = "Título do jogo" })
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                </div>
+            </div>
+        }
     </div>
 </div>
 <div class="row">
@@ -24,6 +38,9 @@
                     <p>
                         @Html.ActionLink("Editar", "Edit", "Game", new { id = game.Id }, new { @class = "btn btn-primary", role = "button" })
                         @Html.ActionLink("Remover", "Delete", new { id = game.Id }, new { @class = "btn btn-danger", role = "button" })
+                    </p>
+                    <p>
+                        @Html.ActionLink(game.Status ? "Emprestar" : "Emprestado", "New", "Lending", new { gameId = game.Id }, new { @class = "btn btn-block " + (!game.Status ? "btn-default disabled" : "btn-success"), role = "button" })
                     </p>
                 </div>
             </div>
