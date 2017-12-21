@@ -166,6 +166,7 @@
     <Compile Include="DAOs\IUsersDAO.cs" />
     <Compile Include="DAOs\LendingsDAO.cs" />
     <Compile Include="DAOs\UsersDAO.cs" />
+    <Compile Include="Filters\AuthorizationFilterAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

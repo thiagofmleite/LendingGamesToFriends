@@ -1,4 +1,5 @@
 ﻿using LendGamesToMyFriends.DAOs;
+using LendGamesToMyFriends.Filters;
 using LendGamesToMyFriends.Models;
 using System;
 using System.Web.Mvc;
@@ -103,21 +104,15 @@ namespace LendGamesToMyFriends.Controllers
             }
         }
 
+        [AuthorizationFilter]
         public ActionResult Dashboard()
         {
             var user = Session["authenticated"] as UserReference;
-            if (user == null)
-            {
-                return RedirectToAction("Index");
-            }
-            else
-            {
-
-                var games = gamesDao.GetAll(user);
-                return View(games);
-            }
+            var games = gamesDao.GetAll(user);
+            return View(games);
         }
 
+        [AuthorizationFilter]
         public ActionResult Logout()
         {
             Session.Abandon();

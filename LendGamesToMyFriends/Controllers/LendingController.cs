@@ -1,13 +1,13 @@
 ﻿using LendGamesToMyFriends.DAOs;
+using LendGamesToMyFriends.Filters;
 using LendGamesToMyFriends.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace LendGamesToMyFriends.Controllers
 {
+    [AuthorizationFilter]
     public class LendingController : Controller
     {
         private ILendingsDAO dao;
@@ -26,10 +26,6 @@ namespace LendGamesToMyFriends.Controllers
         public ActionResult Index()
         {
             user = Session["authenticated"] as UserReference;
-            if (user == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             var lendings = dao.GetAll(user);
             return View(lendings);
         }
@@ -38,10 +34,6 @@ namespace LendGamesToMyFriends.Controllers
         public ActionResult New(Guid? gameId)
         {
             user = Session["authenticated"] as UserReference;
-            if (user == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             ViewBag.Friends = friendsDao.GetAll(user)
                 .OrderBy(f => f.Name)
                 .Select(f => new SelectListItem { Text = $"{f.Name} {f.LastName}", Value = f.Id.ToString() })
@@ -59,10 +51,6 @@ namespace LendGamesToMyFriends.Controllers
         public ActionResult New(Guid friendId, Guid gameId)
         {
             user = Session["authenticated"] as UserReference;
-            if (user == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             if (ModelState.IsValid)
             {
                 try

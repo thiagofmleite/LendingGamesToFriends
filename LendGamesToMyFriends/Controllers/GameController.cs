@@ -1,13 +1,12 @@
 ﻿using LendGamesToMyFriends.DAOs;
+using LendGamesToMyFriends.Filters;
 using LendGamesToMyFriends.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace LendGamesToMyFriends.Controllers
 {
+    [AuthorizationFilter]
     public class GameController : Controller
     {
         private IGamesDAO dao;
@@ -22,10 +21,6 @@ namespace LendGamesToMyFriends.Controllers
         public ActionResult Index(string title)
         {
             user = Session["authenticated"] as UserReference;
-            if (user == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             var games = (string.IsNullOrEmpty(title)) ? dao.GetAll(user) : dao.FindByTitle(title, user);
             return View(games);
         }
@@ -33,10 +28,6 @@ namespace LendGamesToMyFriends.Controllers
         public ActionResult New()
         {
             user = Session["authenticated"] as UserReference;
-            if (user == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             return View("Edit", new Game());
         }
 
@@ -44,10 +35,6 @@ namespace LendGamesToMyFriends.Controllers
         public ActionResult New(Game game)
         {
             user = Session["authenticated"] as UserReference;
-            if (user == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             try
             {
                 game = dao.Save(game, user);
@@ -63,10 +50,6 @@ namespace LendGamesToMyFriends.Controllers
         public ActionResult Edit(Guid? id)
         {
             user = Session["authenticated"] as UserReference;
-            if (user == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             if (id != null)
             {
                 try
@@ -87,10 +70,6 @@ namespace LendGamesToMyFriends.Controllers
         public ActionResult Edit(Game game)
         {
             user = Session["authenticated"] as UserReference;
-            if (user == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             try
             {
                 dao.Update(game, user);
@@ -106,10 +85,6 @@ namespace LendGamesToMyFriends.Controllers
         public ActionResult Delete(Guid id)
         {
             user = Session["authenticated"] as UserReference;
-            if (user == null)
-            {
-                return RedirectToAction("Index", "Home");
-            }
             try
             {
                 dao.Remove(id, user);

@@ -1,8 +1,7 @@
 namespace LendGamesToMyFriends.Migrations
 {
-    using System;
     using System.Data.Entity.Migrations;
-    
+
     public partial class CorrigidaReferenciaAmigoUsuario : DbMigration
     {
         public override void Up()
